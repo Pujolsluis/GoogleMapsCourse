@@ -20,22 +20,22 @@
            android:layout_height="wrap_content"
            android:orientation="horizontal">
            <Button
-               android:id="@+id/map_button"
+               android:id="@+id/tokyo_button"
                android:layout_width="0dp"
                android:layout_height="wrap_content"
-               android:text="Map"
+               android:text="Tokyo"
                android:layout_weight="1"/>
            <Button
-               android:id="@+id/satellite_button"
+               android:id="@+id/newyork_button"
                android:layout_width="0dp"
                android:layout_height="wrap_content"
-               android:text="Satellite"
+               android:text="New York"
                android:layout_weight="1"/>
            <Button
-               android:id="@+id/hybrid_button"
+               android:id="@+id/dublin_button"
                android:layout_width="0dp"
                android:layout_height="wrap_content"
-               android:text="Hybrid"
+               android:text="Dublin"
                android:layout_weight="1"/>
        </LinearLayout>
 

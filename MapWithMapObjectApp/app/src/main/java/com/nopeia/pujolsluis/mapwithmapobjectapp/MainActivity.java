@@ -22,27 +22,66 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button mapButton = (Button) findViewById(R.id.map_button);
-        mapButton.setOnClickListener(new View.OnClickListener() {
+        Button tokyoButton = (Button) findViewById(R.id.tokyo_button);
+        tokyoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mapReady) googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                if(mapReady) {
+                    LatLng tokyo = new LatLng(35.6585,139.7454);
+                    CameraPosition cameraPosition = CameraPosition.builder()
+                            .target(tokyo)
+                            .zoom(17)
+                            .tilt(45)
+                            .bearing(90)
+                            .build();
+
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition),
+                            10000, null);
+//                    googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                }
             }
         });
 
-        Button satelliteButton = (Button) findViewById(R.id.satellite_button);
-        satelliteButton.setOnClickListener(new View.OnClickListener() {
+        Button newYorkButton = (Button) findViewById(R.id.newyork_button);
+        newYorkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mapReady) googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                if(mapReady) {
+                    LatLng newyork = new LatLng(40.7127,-74.0059);
+                    CameraPosition cameraPosition = CameraPosition.builder()
+                            .target(newyork)
+                            .zoom(21)
+                            .tilt(45)
+                            .bearing(0)
+                            .build();
+
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition),
+                            10000, null);
+//                    googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                }
             }
         });
 
-        Button hybridButton = (Button) findViewById(R.id.hybrid_button);
-        hybridButton.setOnClickListener(new View.OnClickListener() {
+        Button dublinButton = (Button) findViewById(R.id.dublin_button);
+        dublinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mapReady) googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                if(mapReady) {
+                    LatLng dublin = new LatLng(53.3474,-6.2597);
+                    CameraPosition cameraPosition = CameraPosition.builder()
+                            .target(dublin)
+                            .zoom(17)
+                            .tilt(45)
+                            .bearing(90)
+                            .build();
+
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition),
+                            10000, null);
+//                    googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                }
             }
         });
 
@@ -58,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng newYork = new LatLng(40.7484, -73.9857);
         CameraPosition target = CameraPosition.builder().target(newYork).zoom(14).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
-        
+        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
     }
 }
