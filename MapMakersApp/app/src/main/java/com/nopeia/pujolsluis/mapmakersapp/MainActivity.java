@@ -10,6 +10,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     MarkerOptions kent;
     MarkerOptions showare;
     PolylineOptions polylineOfHockeyCenters;
+    CircleOptions rentonCircle;
 
 
     static final CameraPosition SEATTLE = CameraPosition.builder()
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//
+
 //        renton = new MarkerOptions()
 //                .position(new LatLng(47.489805, -122.120502))
 //                .title("Renton")
@@ -80,16 +82,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                .title("Showare Center")
 //                .icon(BitmapDescriptorFactory.fromResource(hockey));
 
-          polylineOfHockeyCenters = new PolylineOptions().geodesic(true)
-                  .add(new LatLng(47.489805, -122.120502))
-                  .add(new LatLng(47.7301986, -122.1768858))
-                  .add(new LatLng(47.978748, -122.202001))
-                  .add(new LatLng(47.819533, -122.32288))
-                  .add(new LatLng(47.7973733, -122.3281771))
-                  .add(new LatLng(47.385938, -122.258212))
-                  .add(new LatLng(47.38702, -122.23986))
-                  .add(new LatLng(47.489805, -122.120502))
-                  .color(Color.RED);
+//          polylineOfHockeyCenters = new PolylineOptions().geodesic(true)
+//                  .add(new LatLng(47.489805, -122.120502))
+//                  .add(new LatLng(47.7301986, -122.1768858))
+//                  .add(new LatLng(47.978748, -122.202001))
+//                  .add(new LatLng(47.819533, -122.32288))
+//                  .add(new LatLng(47.7973733, -122.3281771))
+//                  .add(new LatLng(47.385938, -122.258212))
+//                  .add(new LatLng(47.38702, -122.23986))
+//                  .add(new LatLng(47.489805, -122.120502))
+//                  .color(Color.RED);
+        rentonCircle = new CircleOptions()
+                .center(new LatLng(47.489805, -122.120502))
+                .radius(50)
+                .strokeColor(Color.RED)
+                .fillColor(Color.CYAN);
 
 
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
@@ -107,7 +114,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //        googleMap.addMarker(montlake);
 //        googleMap.addMarker(kent);
 //        googleMap.addMarker(showare);
-        googleMap.addPolyline(polylineOfHockeyCenters);
+//        googleMap.addPolyline(polylineOfHockeyCenters);
+        googleMap.addCircle(rentonCircle);
         flyTo(SEATTLE);
 
     }
